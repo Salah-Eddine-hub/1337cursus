@@ -64,10 +64,10 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	return (s);
 }
 
-int	main(void)
-{
-	char	str[] = "sala39#5h";
-	char	src[] = "eddine#@";
+// int	main(void)
+// {
+// 	char	str[] = "sala39#5h";
+// 	char	src[] = "eddine#@";
 
-	printf("%s", ft_strjoin(str, src));
-}
+// 	printf("%s", ft_strjoin(str, src));
+// }

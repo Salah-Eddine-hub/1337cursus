@@ -50,22 +50,22 @@ size_t	ft_strlcat(char *dst, const char *src, size_t dstsize)
 	return (len);
 }
 
-int	main(void)
-{
-	char dest[100] = "Salah";
-	char sorc[100] = "-Eddine";
+// int	main(void)
+// {
+// 	char dest[100] = "Salah";
+// 	char sorc[100] = "-Eddine";
 
-	for (int i = 0; i < 20; i++)
-	{
-		printf("%d, %zu, '%s'\n", i, strlcat(dest, sorc, i), dest);
-		strcpy(dest, "Salah");
-		strcpy(sorc, "-Eddine");
-	}
-	printf("\n");
-	for (int i = 0; i < 20; i++)
-	{
-		printf("%d, %zu, '%s'\n", i, ft_strlcat(dest, sorc, i), dest);
-		strcpy(dest, "Salah");
-		strcpy(sorc, "-Eddine");
-	}
-}
+// 	for (int i = 0; i < 20; i++)
+// 	{
+// 		printf("%d, %zu, '%s'\n", i, strlcat(dest, sorc, i), dest);
+// 		strcpy(dest, "Salah");
+// 		strcpy(sorc, "-Eddine");
+// 	}
+// 	printf("\n");
+// 	for (int i = 0; i < 20; i++)
+// 	{
+// 		printf("%d, %zu, '%s'\n", i, ft_strlcat(dest, sorc, i), dest);
+// 		strcpy(dest, "Salah");
+// 		strcpy(sorc, "-Eddine");
+// 	}
+// }

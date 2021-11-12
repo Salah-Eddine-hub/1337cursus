@@ -1,34 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memset.c                                        :+:      :+:    :+:   */
+/*   ft_strlen.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sharrach <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/02 11:50:57 by sharrach          #+#    #+#             */
-/*   Updated: 2021/11/02 11:50:59 by sharrach         ###   ########.fr       */
+/*   Created: 2021/11/02 11:33:37 by sharrach          #+#    #+#             */
+/*   Updated: 2021/11/02 11:33:40 by sharrach         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include<stdio.h>
+#include <stdio.h>
 
-void	*ft_memset(void *b, int c, size_t len)
+size_t	ft_strlen(const	char *str)
 {
-	size_t	i;	
-	char	*n;
+	size_t	i;
+	char	*s;
 
+	s = (char *)str;
 	i = 0;
-	n = (char *)b;
-	while (i < len)
-	{
-		n[i] = c;
+	while (s[i] != '\0')
 		i++;
-	}
-	return (n);
+	return (i);
 }
 
-int main(void)
-{
-	char str[50] = "ilyasjam3tel";
-	printf("%s", ft_memset(str, '$', 7));
-}
+// int	main(void)
+// {
+// 	printf("%zu", ft_strlen("salah"));
+// }

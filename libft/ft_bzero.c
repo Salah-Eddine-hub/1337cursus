@@ -1,34 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strchr.c                                        :+:      :+:    :+:   */
+/*   ft_bzero.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sharrach <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/02 18:50:04 by sharrach          #+#    #+#             */
-/*   Updated: 2021/11/03 09:30:11 by sharrach         ###   ########.fr       */
+/*   Created: 2021/11/02 17:38:11 by sharrach          #+#    #+#             */
+/*   Updated: 2021/11/02 18:29:44 by sharrach         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include<stdio.h>
-char *ft_strchr(char *s, int c)
+#include <stdio.h>
+#include <string.h>
+
+void	ft_bzero(void *s, size_t n)
 {
-	int i = 0;
-	while(s[i] != '\0')
+	size_t	i;
+	char	*str;
+
+	i = 0;
+	str = (char *)s;
+	while (n > i)
 	{
-		if(c == s[i])
-			return (&s[i]);
+		str[i] = 0;
 		i++;
 	}
-	if(c == '\0')
-		return (&s[i]);
-	else
-		return (0);
 }
-/*
-#include <string.h>
-int main()
-{
-	char str[]= "salah hh";
-	printf("%s", ft_strchr(str, '\0'));
-}*/
+
+// int	main(void)
+// {
+// 	char str[6] = "salah";
+
+// 	ft_bzero(str, 0);
+// 	printf("%s", str);
+// }

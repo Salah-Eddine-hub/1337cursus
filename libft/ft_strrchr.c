@@ -1,52 +1,43 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_substr.c                                        :+:      :+:    :+:   */
+/*   ft_strrchr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sharrach <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/06 11:41:47 by sharrach          #+#    #+#             */
-/*   Updated: 2021/11/06 11:41:49 by sharrach         ###   ########.fr       */
+/*   Created: 2021/11/03 09:30:39 by sharrach          #+#    #+#             */
+/*   Updated: 2021/11/03 11:00:04 by sharrach         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include<stdio.h>
-#include<stdlib.h>
 
-static size_t	ft_strlen(const	char *str)
+int	ft_strlen(char *str)
 {
-	size_t	i;
-	char	*s;
+	int	i;
 
-	s = (char *)str;
 	i = 0;
-	while (s[i] != '\0')
+	while (str[i] != '\0')
 		i++;
 	return (i);
 }
 
-char	*ft_substr(char const *s, unsigned int start, size_t len)
+char	*ft_strrchr(char *s, int c)
 {
-	char	*str;
-	size_t	i;
+	int	i;
 
-	i = 0;
-	str = (char *)malloc(ft_strlen(s) * sizeof (char));
-	if (str == NULL)
-		return (0);
-	while (i < len)
+	i = ft_strlen(s);
+	while (i >= 0)
 	{
-		str[i] = s[start];
-		i++;
-		start++;
+		if (c == s[i])
+			return (&s[i]);
+		i--;
 	}
-	str[i] = '\0';
-	return (str);
+	return (0);
 }
 
-int	main(void)
-{
-	char	str[] = "abcdefgh";
-
-	printf("%s", ft_substr(str, 3, 3));
-}
+// int main()
+// {
+// 	char str[]="heello";
+// 	printf("%s", ft_strrchr(str, 'l'));
+// }

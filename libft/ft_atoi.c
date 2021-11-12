@@ -1,44 +1,47 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memcpy.c                                        :+:      :+:    :+:   */
+/*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sharrach <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/03 15:39:20 by sharrach          #+#    #+#             */
-/*   Updated: 2021/11/03 15:39:22 by sharrach         ###   ########.fr       */
+/*   Created: 2021/11/03 15:34:10 by sharrach          #+#    #+#             */
+/*   Updated: 2021/11/03 15:34:12 by sharrach         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include<string.h>
 #include<stdio.h>
-#include<stdlib.h>
 
-void	*ft_memcpy(void *dst, const void *src, size_t n)
+int	ft_atoi(const char *str)
 {
-	size_t		i;
-	char		*b;
-	const char	*d;
+	int	i;
+	int	c;
+	int	b;
 
 	i = 0;
-	b = (char *)dst;
-	d = (const char *)src;
-	while (b[i] && d[i])
+	c = 1;
+	while ((str[i] >= 9 && str[i] <= 13) || str[i] == 32)
 	{
-		if (n > i)
-		{
-			b[i] = d[i];
-		}
 		i++;
 	}
-	b[i] = '\0';
-	return (b);
+	while (str[i] == '-' || str[i] == '+' )
+	{
+		if (str[i] == '-')
+			c *= -1;
+		i++;
+	}
+	b = 0;
+	while (str[i] >= '0' && str[i] <= '9')
+	{
+		b *= 10;
+		b += str[i] - 48;
+		i++;
+	}
+	return (c * b);
 }
 
-int	main(void)
-{
-	char dst[20] = "heluo";
-	char src[20] = "world";
-
-	printf("%s", ft_memcpy(dst, src, 3));
-}
+// int	main(void)
+// {
+// 	char u[]="  \t \r -+--+-----a----+-12 548kd ";
+// 		printf("%d", ft_atoi(u));
+// }

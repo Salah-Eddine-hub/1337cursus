@@ -38,15 +38,15 @@ void	*ft_calloc(size_t count, size_t size)
 	return (str);
 }
 
-int	main(void)
-{
-	int		i;
-	char	*arr;
+// int	main(void)
+// {
+// 	int		i;
+// 	char	*arr;
 
-	i = 0;
-	arr = ft_calloc(5, sizeof(int));
-	while (i < 5)
-	{
-		printf("%c\n", arr[i++]);
-	}
-}
+// 	i = 0;
+// 	arr = ft_calloc(5, sizeof(int));
+// 	while (i < 5)
+// 	{
+// 		printf("%c\n", arr[i++]);
+// 	}
+// }

@@ -53,8 +53,8 @@ char	*ft_strdup(const char *src)
 	return (dest);
 }
 
-int	main(void)
-{
-	char str[] = "let go";
-	printf("%s", ft_strdup(str));
-}
+// int	main(void)
+// {
+// 	char str[] = "let go";
+// 	printf("%s", ft_strdup(str));
+// }
