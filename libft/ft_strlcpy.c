@@ -10,8 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
-#include <string.h>
+#include "libft.h"
 
 size_t	ft_strlcpy(char *restrict dst, const char *restrict src, size_t dstsize)
 {
@@ -27,6 +26,8 @@ size_t	ft_strlcpy(char *restrict dst, const char *restrict src, size_t dstsize)
 	return ((char)src);
 }
 
+// #include <stdio.h>
+// #include <string.h>
 // int main (void)
 // {
 // 	char src[] = "salah";

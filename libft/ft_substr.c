@@ -10,10 +10,9 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include<stdio.h>
-#include<stdlib.h>
+#include "libft.h"
 
-static size_t	ft_strlen(const	char *str)
+size_t	ft_strlen(const	char *str)
 {
 	size_t	i;
 	char	*s;
@@ -43,6 +42,9 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 	str[i] = '\0';
 	return (str);
 }
+
+// #include<stdio.h>
+// #include<stdlib.h>
 
 // int	main(void)
 // {

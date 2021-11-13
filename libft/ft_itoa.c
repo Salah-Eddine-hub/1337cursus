@@ -11,7 +11,6 @@
 /* ************************************************************************** */
 
 #include "libft.h"
-#include<string.h>
 
 static size_t	ft_n(long n)
 {
@@ -30,36 +29,37 @@ static size_t	ft_n(long n)
 
 char	*ft_itoa(int n)
 {	
-	size_t	i;
-	char	*ptr;
-	long	np;
-	size_t	k;
+	char	*str;
+	long	nb;
+	size_t	nb_len;
+	size_t	negative;
 
-	i = 0;
-	np = n;
-	k = ft_n(np);
-	if (np < 0)
-		i++;
-	ptr = malloc(k + i + 1);
-	if (!ptr)
+	negative = 0;
+	if (n < 0)
+		negative = 1;
+	nb = n;
+	if (nb < 0)
+		nb = -nb;
+	nb_len = ft_n(nb);
+	str = malloc(nb_len + negative + 1);
+	if (!str)
 		return (NULL);
-	ptr[k + i] = '\0';
-	if (np < 0)
+	if (n < 0)
+		str[0] = '-';
+	str[nb_len + negative] = '\0';
+	while (nb_len)
 	{
-		ptr[0] = '-';
+		str[nb_len + negative - 1] = (nb % 10) + '0';
+		nb /= 10;
+		nb_len--;
 	}
-	while (k)
-	{
-		ptr[k + i - 1] = (np % 10) + '0';
-		np /= 10;
-		k--;
-	}
-	return (ptr);
+	return (str);
 }
 
+// #include<string.h>
 // #include<stdio.h>
 // int	main(void)
 // {
-//     printf ("%s",ft_itoa(-123));
+//     printf ("%s", ft_itoa(-2147483648));
 //     return (0);
 // }

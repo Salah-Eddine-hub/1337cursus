@@ -10,35 +10,34 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include<string.h>
-#include<stdio.h>
-#include<stdlib.h>
+#include <stdlib.h>
+#include "libft.h"
 
 void	*ft_memcpy(void *dst, const void *src, size_t n)
 {
 	size_t		i;
-	char		*b;
-	const char	*d;
+	char		*d;
+	const char	*s;
 
+	if (!dst && !src)
+		return (0);
 	i = 0;
-	b = (char *)dst;
-	d = (const char *)src;
-	while (b[i] && d[i])
+	d = dst;
+	s = src;
+	while (i < n)
 	{
-		if (n > i)
-		{
-			b[i] = d[i];
-		}
+		d[i] = s[i];
 		i++;
 	}
-	b[i] = '\0';
-	return (b);
+	return (dst);
 }
+/*
+#include <stdio.h>
+int	main(void)
+{
+	char dst[20] = "Hello";
 
-// int	main(void)
-// {
-// 	char dst[20] = "heluo";
-// 	char src[20] = "world";
-
-// 	printf("%s", ft_memcpy(dst, src, 3));
-// }
+	ft_memcpy(dst + 1, dst, 5);
+	printf("%s", dst);
+}
+*/

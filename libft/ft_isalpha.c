@@ -9,17 +9,19 @@
 /*   Updated: 2021/11/01 12:48:15 by sharrach         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include <ctype.h>
-#include <stdio.h>
+
+#include "libft.h"
 
 int	ft_isalpha(int c)
 {
-	if ((c >= 101 && c <= 132) || (c >= 142 && c <= 172))
+	if ((c >= 65 && c <= 90) || (c >= 97 && c <= 122))
 		return (1);
 	else
 		return (0);
 }
 
+// #include <ctype.h>
+// #include <stdio.h>
 /*int main ()
 {
     int i = 171;

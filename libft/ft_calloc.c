@@ -10,10 +10,9 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include<stdio.h>
-#include<stdlib.h>
+#include "libft.h"
 
-static void	ft_bzero(void *s, size_t n)
+void	ft_bzero(void *s, size_t n)
 {
 	size_t	i;
 	char	*str;
@@ -38,6 +37,8 @@ void	*ft_calloc(size_t count, size_t size)
 	return (str);
 }
 
+// #include<stdio.h>
+// #include<stdlib.h>
 // int	main(void)
 // {
 // 	int		i;

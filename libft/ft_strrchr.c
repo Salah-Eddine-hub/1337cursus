@@ -10,19 +10,9 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include<stdio.h>
+#include "libft.h"
 
-int	ft_strlen(char *str)
-{
-	int	i;
-
-	i = 0;
-	while (str[i] != '\0')
-		i++;
-	return (i);
-}
-
-char	*ft_strrchr(char *s, int c)
+char	*ft_strrchr(const char *s, int c)
 {
 	int	i;
 
@@ -30,12 +20,13 @@ char	*ft_strrchr(char *s, int c)
 	while (i >= 0)
 	{
 		if (c == s[i])
-			return (&s[i]);
+			return ((char *)&s[i]);
 		i--;
 	}
 	return (0);
 }
 
+// #include<stdio.h>
 // int main()
 // {
 // 	char str[]="heello";

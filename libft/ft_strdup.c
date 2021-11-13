@@ -9,20 +9,8 @@
 /*   Updated: 2021/11/06 10:46:30 by sharrach         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include<stdio.h>
-#include<stdlib.h>
 
-static size_t	ft_strlen(const	char *str)
-{
-	size_t	i;
-	char	*s;
-
-	s = (char *)str;
-	i = 0;
-	while (s[i] != '\0')
-		i++;
-	return (i);
-}
+#include "libft.h"
 
 static char	*ft_strcpy(char *dest, const char *src)
 {
@@ -52,7 +40,8 @@ char	*ft_strdup(const char *src)
 	ft_strcpy(dest, src);
 	return (dest);
 }
-
+// #include<stdio.h>
+// #include<stdlib.h>
 // int	main(void)
 // {
 // 	char str[] = "let go";

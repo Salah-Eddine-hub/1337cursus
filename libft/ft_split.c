@@ -10,11 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include<stdio.h>
-#include<stdlib.h>
-#include<string.h>
-
-#include <stdlib.h>
+#include "libft.h"
 
 char	**ft_split(char const *s, char c)
 {
@@ -64,20 +60,22 @@ char	**ft_split(char const *s, char c)
 	return (arr);
 }
 
-#include <stdio.h>
-int	main(void)
-{
-	char	str[100] = "Hello World!";
-	char	c = 'o';
-	char	**array = ft_split(str, c);
+// #include<stdlib.h>
+// #include<string.h>
+// #include <stdio.h>
+// int	main(void)
+// {
+// 	char	str[100] = "Hello World!";
+// 	char	c = 'o';
+// 	char	**array = ft_split(str, c);
 
-	int i = 0;
-	while (array[i] != 0)
-	{
-		printf("%d. '%s'\n", i, array[i]);
-		i ++;
-	}
-}
+// 	int i = 0;
+// 	while (array[i] != 0)
+// 	{
+// 		printf("%d. '%s'\n", i, array[i]);
+// 		i ++;
+// 	}
+// }
 
 /*
 char	str[100] = "Hello World!";

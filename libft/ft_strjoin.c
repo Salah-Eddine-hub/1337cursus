@@ -10,8 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include<stdio.h>
-#include<stdlib.h>
+#include"libft.h"
 
 size_t	ft_strlen(const	char *str)
 {
@@ -25,7 +24,7 @@ size_t	ft_strlen(const	char *str)
 	return (i);
 }
 
-char	*ft_strcat(char *dest, const char *src)
+static	char	*ft_strcat(char *dest, const char *src)
 {
 	int	i;
 	int	j;
@@ -64,6 +63,8 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	return (s);
 }
 
+// #include<stdio.h>
+// #include<stdlib.h>
 // int	main(void)
 // {
 // 	char	str[] = "sala39#5h";

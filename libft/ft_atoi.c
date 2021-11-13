@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include<stdio.h>
+#include "libft.h"
 
 int	ft_atoi(const char *str)
 {
@@ -24,7 +24,7 @@ int	ft_atoi(const char *str)
 	{
 		i++;
 	}
-	while (str[i] == '-' || str[i] == '+' )
+	if (str[i] == '-' || str[i] == '+' )
 	{
 		if (str[i] == '-')
 			c *= -1;
@@ -40,6 +40,7 @@ int	ft_atoi(const char *str)
 	return (c * b);
 }
 
+// #include<stdio.h>
 // int	main(void)
 // {
 // 	char u[]="  \t \r -+--+-----a----+-12 548kd ";

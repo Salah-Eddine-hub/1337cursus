@@ -10,31 +10,35 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include<stdio.h>
-#include<string.h>
+#include "libft.h"
 
-char	*strnstr(const char *haystack, const char *needle, size_t len)
+char	*ft_strnstr(const char *haystack, const char *needle, size_t len)
 {
 	size_t	i;
 	size_t	j;
-	char	*s;
-	char	*n;
 
 	i = 0;
-	s = (char *)haystack;
-	n = (char *)needle;
-	​if​ (n[​i] == ​NULL)
-		​return​ (0);
-	​while​ (s[i] != ​'​\0​'​ && i < len)
-	{ 
-		j = ​0​; 
-		​while​ (s[i + j] != ​'​\0​'​ && i + j < len && s[i + j] == n[j])
-		{ 
-			if​ (n[j + ​1​] == ​'​\0​'​)
-			​return​ (&s[i]);
+	if (*needle == 0)
+		return ((char *)haystack);
+	while (haystack[i] != '\0' && i < len)
+	{
+		j = 0;
+		while (haystack[i + j] && i + j < len && haystack[i + j] == needle[j])
+		{
+			if (needle[j + 1] == '\0')
+				return ((char *)&haystack[i]);
 			j++;
-		} 
+		}
 		i++;
-	} 
-	​return​ (​NULL​);
+	}
+	return (0);
 }
+
+// #include<stdio.h>
+// #include<string.h>
+// int main(void)
+// {
+// 	char	h[] = "hello";
+// 	char	n[] = "e";
+// 	printf("%s", strnstr(h, n, 10));
+// }

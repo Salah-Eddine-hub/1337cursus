@@ -10,4 +10,29 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "libft.h"
 
+void	*ft_memchr(const void *s, int c, size_t n)
+{
+	size_t		i;
+	const char	*str;
+
+	if (!s)
+		return (0);
+	i = 0;
+	str = s;
+	while (i < n)
+	{
+		if (str[i] == (unsigned char)c)
+			return ((void *)&str[i]);
+		i ++;
+	}
+	return (0);
+}
+
+// #include<stdio.h>
+// int main(void)
+// {
+// 	char	str[100] = "s32l4g6ah";
+// 	printf("'%s'", ft_memchr(str, '\0', 15));
+// }	
