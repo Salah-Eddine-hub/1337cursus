@@ -10,4 +10,30 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "libft.h"
+// #include<stdio.h>
+// void fun(unsigned int k, char *c)
+// {
+// 	*c += 1;
+// }
 
+void	ft_striteri(char *s, void (*f)(unsigned int, char *))
+{
+	unsigned int		i;
+
+	i = 0;
+	if (!s || !f)
+		return ;
+	while (s[i] != '\0')
+	{
+		(*f)(i, &s[i]);
+		i++;
+	}
+}
+// int	main(void)
+// {
+// 	char str[] = "Hello";
+// 	printf("%s \n", str);
+// 	ft_striteri(str,fun);
+// 	printf("%s",str );
+// }

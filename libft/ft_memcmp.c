@@ -10,4 +10,33 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "libft.h"
 
+int	ft_memcmp(const void *s1, const void *s2, size_t n)
+{
+	size_t				i;
+	unsigned const char	*str;
+	unsigned const char	*str1;
+
+	str = (unsigned const char *)s1;
+	str1 = (unsigned const char *)s2;
+	i = 0;
+	while (n > i)
+	{
+		if (str[i] != str1[i])
+			return (str[i] - str1[i]);
+		i++;
+	}
+	return (0);
+}
+
+// #include<string.h>
+// #include<stdio.h>
+
+// int	main(void)
+// {
+// 	char	str1[] = "salah";
+// 	char	str2[] = "asalh";
+
+// 	printf("%d", ft_memcmp(str1, str2, 3));
+// }
