@@ -15,11 +15,11 @@
 int	ft_atoi(const char *str)
 {
 	int	i;
-	int	c;
-	int	b;
+	int	sign;
+	int	nb;
 
 	i = 0;
-	c = 1;
+	sign = 1;
 	while ((str[i] >= 9 && str[i] <= 13) || str[i] == 32)
 	{
 		i++;
@@ -27,22 +27,23 @@ int	ft_atoi(const char *str)
 	if (str[i] == '-' || str[i] == '+' )
 	{
 		if (str[i] == '-')
-			c *= -1;
+			sign *= -1;
 		i++;
 	}
-	b = 0;
+	nb = 0;
 	while (str[i] >= '0' && str[i] <= '9')
 	{
-		b *= 10;
-		b += str[i] - 48;
+		nb = (nb * 10) + str[i] - 48;
 		i++;
 	}
-	return (c * b);
+	return (sign * nb);
 }
 
 // #include<stdio.h>
+// #include<stdlib.h>
+
 // int	main(void)
 // {
-// 	char u[]="  \t \r -+--+-----a----+-12 548kd ";
-// 		printf("%d", ft_atoi(u));
+// 	char u[]="  \t \r -g12548kd ";
+// 	printf("%d", ft_atoi(u));
 // }

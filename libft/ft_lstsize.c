@@ -1,37 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_bzero.c                                         :+:      :+:    :+:   */
+/*   ft_lstsize.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sharrach <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/02 17:38:11 by sharrach          #+#    #+#             */
-/*   Updated: 2021/11/02 18:29:44 by sharrach         ###   ########.fr       */
+/*   Created: 2021/11/20 21:03:04 by sharrach          #+#    #+#             */
+/*   Updated: 2021/11/23 00:18:38 by sharrach         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_bzero(void *s, size_t n)
+int	ft_lstsize(t_list *lst)
 {
-	size_t	i;
-	char	*str;
+	int	i;
 
 	i = 0;
-	str = (char *)s;
-	while (n > i)
+	while (lst != '\0')
 	{
-		str[i] = 0;
-		i++;
+		i ++;
+		lst = lst->next;
 	}
+	return (i);
 }
-
-// #include <stdio.h>
-// #include <string.h>
-// int	main(void)
-// {
-// 	char str[6] = "salah";
-
-// 	ft_bzero(str, 5);
-// 	printf("%s", str);
-// }

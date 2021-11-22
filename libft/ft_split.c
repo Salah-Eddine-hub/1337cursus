@@ -12,53 +12,68 @@
 
 #include "libft.h"
 
+static char	**ft_free_arr(int i, char **arr)
+{
+	while (i-- > 0)
+		free(arr[i]);
+	free(arr);
+	return (0);
+}
+
+static size_t	ft_count(char const *s, char c)
+{
+	size_t	i;
+	size_t	count;
+
+	count = 0;
+	i = 0;
+	while (s[i] && s[i] == c)
+		i ++;
+	if (s[i] && s[i] != c)
+	{
+		count++;
+		i++;
+	}
+	while (s[i])
+	{
+		if (s[i - 1] == c && s[i] != c)
+			count++;
+		i++;
+	}
+	return (count);
+}
+
 char	**ft_split(char const *s, char c)
 {
 	size_t	i;
 	size_t	j;
 	size_t	k;
-	size_t	count;
-	size_t	len;
 	char	**arr;
 
-	count = 1;
-	i = 0;
-	while (s[i])
-	{
-		if (c == s[i])
-			count++ ;
-		i++ ;
-	}
-	arr = (char **) malloc ((count + 1) * sizeof(char *));
+	if (!s)
+		return (0);
+	arr = (char **) malloc ((ft_count(s, c) + 1) * sizeof(char *));
 	if (arr == NULL)
 		return (0);
-	i = 0;
+	i = -1;
 	j = 0;
-	while (i < count)
+	while (++i < ft_count(s, c))
 	{
 		while (s[j] == c)
 			j++;
-		len = 0;
-		while (s[j] != c)
-		{
-			j++;
-			len++;
-		}
-		arr[i] = (char *) malloc ((len + 1) * sizeof(char));
-		if (arr[i] == NULL)
-			return (0);
 		k = 0;
-		while (k < len)
-		{
-			arr[i][k] = s[k + j - len];
+		while (s[j++] != c)
 			k++;
-		}
-		i++;
+		arr[i] = ft_substr(s, j - k - 1, k);
+		if (arr[i] == NULL)
+			return (ft_free_arr(i, arr));
 	}
-	arr[i] = (char *) malloc (1 * sizeof(char));
 	arr[i] = 0;
 	return (arr);
 }
+
+// #include "ft_substr.c"
+// #include "ft_strlen.c"
 
 // #include<stdlib.h>
 // #include<string.h>
@@ -66,36 +81,14 @@ char	**ft_split(char const *s, char c)
 
 // int	main(void)
 // {
-// 	char	str[100] = "Hello World!";
-// 	char	c = 'o';
-// 	char	**array = ft_split(str, c);
+// 		char	str[5000] = "hhsalah";
+// 		char	c = 'i';
+// 		char	**array = ft_split(str, c);
 
-// 	int i = 0;
-// 	while (array[i] != 0)
-// 	{
-// 		printf("%d. '%s'\n", i, array[i]);
-// 		i ++;
-// 	}
+// 		int i = 0;
+// 		while (array[i] != 0)
+// 		{
+// 			printf("%s\n", array[i]);
+// 			i ++;
+// 		}
 // }
-
-/*
-char	str[100] = "Hello World!";
-char	c = 'o';
-
-**array = [
-			“Hell”,
-			“ W”,
-			“rld!”,
-			0
-		];
-
-1st step: malloc the array.
-array = (char **) malloc ((how many elemets?) * sizeof(char *));
-
-
-2nd step: malloc each string.
-arr[i] = (char *) malloc ((string length? + 1) * sizeof(char));
-
-if (s[i] != c)
-	len++;
-*/
