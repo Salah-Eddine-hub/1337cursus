@@ -14,13 +14,23 @@
 
 static char	**ft_free_arr(int i, char **arr)
 {
-	while (i-- > 0)
+	while (i--)
 		free(arr[i]);
 	free(arr);
 	return (0);
 }
 
-static size_t	ft_count(char const *s, char c)
+static size_t	ft_split_strlen(char const *s, char c)
+{
+	size_t	str_len;
+
+	str_len = 0;
+	while (s[str_len] && s[str_len] != c)
+		str_len++;
+	return (str_len);
+}
+
+static size_t	ft_count_strs(char const *s, char c)
 {
 	size_t	i;
 	size_t	count;
@@ -47,48 +57,27 @@ char	**ft_split(char const *s, char c)
 {
 	size_t	i;
 	size_t	j;
-	size_t	k;
+	size_t	str_len;
 	char	**arr;
 
 	if (!s)
 		return (0);
-	arr = (char **) malloc ((ft_count(s, c) + 1) * sizeof(char *));
+	arr = (char **) malloc (sizeof(char *) * (ft_count_strs(s, c) + 1));
 	if (arr == NULL)
 		return (0);
-	i = -1;
+	i = 0;
 	j = 0;
-	while (++i < ft_count(s, c))
+	while (i < ft_count_strs(s, c))
 	{
 		while (s[j] == c)
 			j++;
-		k = 0;
-		while (s[j++] != c)
-			k++;
-		arr[i] = ft_substr(s, j - k - 1, k);
+		str_len = ft_split_strlen(&s[j], c);
+		arr[i] = ft_substr(s, j, str_len);
 		if (arr[i] == NULL)
 			return (ft_free_arr(i, arr));
+		j += str_len;
+		i ++;
 	}
 	arr[i] = 0;
 	return (arr);
 }
-
-// #include "ft_substr.c"
-// #include "ft_strlen.c"
-
-// #include<stdlib.h>
-// #include<string.h>
-// #include <stdio.h>
-
-// int	main(void)
-// {
-// 		char	str[5000] = "hhsalah";
-// 		char	c = 'i';
-// 		char	**array = ft_split(str, c);
-
-// 		int i = 0;
-// 		while (array[i] != 0)
-// 		{
-// 			printf("%s\n", array[i]);
-// 			i ++;
-// 		}
-// }

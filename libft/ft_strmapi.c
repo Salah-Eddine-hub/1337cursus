@@ -11,12 +11,6 @@
 /* ************************************************************************** */
 
 #include "libft.h"
-// #include<stdio.h>
-
-// char	fun(unsigned int k, char c)
-// {
-// 	return (c - c + k + '0');
-// }
 
 char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 {
@@ -37,10 +31,3 @@ char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 	str[i] = '\0';
 	return (str);
 }
-
-// int	main(void)
-// {
-// 	const char str[] = "Hello";
-// 	printf("%s \n", str);
-// 	printf("%s", ft_strmapi(str, fun));
-// }

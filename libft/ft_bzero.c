@@ -25,13 +25,3 @@ void	ft_bzero(void *s, size_t n)
 		i++;
 	}
 }
-
-// #include <stdio.h>
-// #include <string.h>
-// int	main(void)
-// {
-// 	char str[6] = "salah";
-
-// 	ft_bzero(str, 5);
-// 	printf("%s", str);
-// }

@@ -27,10 +27,3 @@ void	*ft_memchr(const void *s, int c, size_t n)
 	}
 	return (0);
 }
-
-// #include<stdio.h>
-// int main(void)
-// {
-// 	char	str[100] = "s32l4g6ah";
-// 	printf("'%s'", ft_memchr(str, '\0', 15));
-// }	

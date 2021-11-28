@@ -40,10 +40,3 @@ char	*ft_strdup(const char *src)
 	ft_strcpy(dest, src);
 	return (dest);
 }
-// #include<stdio.h>
-// #include<stdlib.h>
-// int	main(void)
-// {
-// 	char str[] = "let go";
-// 	printf("%s", ft_strdup(str));
-// }

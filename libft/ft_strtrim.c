@@ -10,67 +10,37 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <stdlib.h>
 #include "libft.h"
 
-static	size_t	ft_tstart(const char *s1, const char *set)
+static int	ft_str_has_char(const char *str, char c)
 {
-	size_t	len;
 	size_t	i;
 
-	len = ft_strlen(s1);
 	i = 0;
-	while (i < len)
+	while (str[i] != '\0')
 	{
-		if (ft_strchr(set, s1[i]) == 0)
-			break ;
-		i++;
+		if (str[i] == c)
+			return (1);
+		i ++;
 	}
-	return (i);
-}
-
-static	int	ft_tend(const char *s1, const char *set)
-{
-	size_t	len;
-	size_t	i;
-
-	len = ft_strlen(s1);
-	i = 0;
-	while (i < len)
-	{
-		if (ft_strchr(set, s1[len - i - 1]) == 0)
-			break ;
-		i++;
-	}
-	return (len - i);
+	return (0);
 }
 
 char	*ft_strtrim(char const *s1, char const *set)
 {
-	size_t	s;
-	size_t	e;
-	char	*nstr;
+	char	*str;
+	size_t	start;
+	size_t	end;
 
-	if (s1 == NULL)
+	if (!s1)
 		return (0);
-	if (set == NULL)
-		return (ft_strdup (s1));
-	s = ft_tstart(s1, set);
-	e = ft_tend(s1, set);
-	if (s >= e)
-		return (ft_strdup(""));
-	nstr = (char *)malloc(sizeof(char) * (e - s + 1));
-	if (nstr == 0)
-		return (0);
-	ft_strlcpy(nstr, s1 + s, e - s + 1);
-	return (nstr);
+	start = 0;
+	end = ft_strlen(s1) - 1;
+	while (ft_str_has_char(set, s1[start]))
+		start ++;
+	while (ft_str_has_char(set, s1[end]))
+		end --;
+	str = ft_substr(s1, start, end - start + 1);
+	return (str);
 }
-
-// #include <stdio.h>
-
-// int	main(void)
-// {
-// 	char se[] = "hello guys";
-// 	char set[] = "lo";
-
-// 	printf("%s", ft_strtrim(se, set));
-// }

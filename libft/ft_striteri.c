@@ -11,11 +11,6 @@
 /* ************************************************************************** */
 
 #include "libft.h"
-// #include<stdio.h>
-// void fun(unsigned int k, char *c)
-// {
-// 	*c += 1;
-// }
 
 void	ft_striteri(char *s, void (*f)(unsigned int, char *))
 {
@@ -30,10 +25,3 @@ void	ft_striteri(char *s, void (*f)(unsigned int, char *))
 		i++;
 	}
 }
-// int	main(void)
-// {
-// 	char str[] = "Hello";
-// 	printf("%s \n", str);
-// 	ft_striteri(str,fun);
-// 	printf("%s",str );
-// }

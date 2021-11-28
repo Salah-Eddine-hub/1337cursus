@@ -28,12 +28,3 @@ size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize)
 	}
 	return (ft_strlen(src));
 }
-
-// #include <stdio.h>
-// #include <string.h>
-// int main (void)
-// {
-// 	char src[] = "salah";
-// 	char des[] = "eddine";
-// 	printf("%zu", ft_strlcpy(des, src, 4));
-// }

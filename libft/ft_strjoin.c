@@ -64,13 +64,3 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	ft_strcat(s, (char *) s2);
 	return (s);
 }
-
-// #include<stdio.h>
-// #include<stdlib.h>
-// int	main(void)
-// {
-// 	char	str[100] = "39#5slahh";
-// 	char	src[100] = "kemleddine#@";
-
-// 	printf("%s", ft_strjoin(str, src));
-// }

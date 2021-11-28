@@ -27,11 +27,3 @@ char	*ft_strchr(const char *s, int c)
 		return ((char *)&s[i]);
 	return (0);
 }
-//#include<stdio.h>
-/*
-#include <string.h>
-int main()
-{
-	char str[]= "salah hh";
-	printf("%s", ft_strchr(str, '\0'));
-}*/

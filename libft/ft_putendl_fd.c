@@ -20,9 +20,6 @@ void	ft_putendl_fd(char *s, int fd)
 	if (s == NULL)
 		return ;
 	while (s[i] != '\0')
-	{
-		write (fd, &s[i], 1);
-		i++;
-	}
+		ft_putchar_fd(s[i++], fd);
 	ft_putchar_fd('\n', fd);
 }

@@ -10,37 +10,30 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <stdlib.h>
 #include "libft.h"
 
 size_t	ft_strlcat(char *dst, const char *src, size_t dstsize)
 {
-	size_t		i;
-	size_t		len_src;
-	size_t		len_dst;
+	size_t	dst_len;
+	size_t	src_len;
+	size_t	i;
 
-	i = 0;
-	len_src = ft_strlen(src);
-	len_dst = ft_strlen(dst);
+	dst_len = ft_strlen(dst);
+	src_len = ft_strlen(src);
 	if (dstsize > 0)
 	{
-		while (src[i] && dstsize - 1 > len_dst + i)
+		i = 0;
+		while (src[i] && i + dst_len < dstsize - 1)
 		{
-			dst[len_dst + i] = src[i];
+			dst[i + dst_len] = src[i];
 			i ++;
 		}
-		dst[len_dst + i] = '\0';
+		if (i > 0)
+			dst[i + dst_len] = '\0';
 	}
-	if (dstsize >= len_dst)
-		return (len_src + len_dst);
-	return (len_src + dstsize);
+	if (dstsize >= dst_len)
+		return (dst_len + src_len);
+	else
+		return (src_len + dstsize);
 }
-
-// #include<stdio.h>
-// #include<string.h>
-
-// int	main(void)
-// {
-// 	check(ft_strlcat(dest, src, -1) == 14 &&
-// !strcmp(dest, "CCCCCAAAAAAAAA")); showLeaks();
-// 	memset(dest, 'C', 15);
-// }

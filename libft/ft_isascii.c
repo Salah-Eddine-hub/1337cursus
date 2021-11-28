@@ -18,10 +18,3 @@ int	ft_isascii(int c)
 		return (1);
 	return (0);
 }
-
-// #include <stdio.h>
-// #include <ctype.h>
-/*int main()
-{
-    printf("%d", ft_isascii(' '));
-}*/

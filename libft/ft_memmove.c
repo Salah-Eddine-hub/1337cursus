@@ -39,17 +39,3 @@ void	*ft_memmove(void *dst, const void *src, size_t len)
 	}
 	return (dst);
 }
-
-// #include <stdio.h>
-// int	main(void)
-// {
-// 	char sResult[100] = "ABCDEF";
-// 	char sResult2[100] = "ABCDEF";
-
-// 	// char dst[20] = "Hello";
-
-// 	printf("%s\n", sResult);
-// 	printf("%s\n", sResult2);
-// 	ft_memmove(sResult + 1, sResult2, 5);
-// 	printf("%s\n", sResult);
-// }

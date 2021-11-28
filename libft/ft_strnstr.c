@@ -33,12 +33,3 @@ char	*ft_strnstr(const char *haystack, const char *needle, size_t len)
 	}
 	return (0);
 }
-
-// #include<stdio.h>
-// #include<string.h>
-// int main(void)
-// {
-// 	char	h[] = "hello";
-// 	char	n[] = "e";
-// 	printf("%s", strnstr(h, n, 10));
-// }

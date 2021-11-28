@@ -38,12 +38,3 @@ int	ft_atoi(const char *str)
 	}
 	return (sign * nb);
 }
-
-// #include<stdio.h>
-// #include<stdlib.h>
-
-// int	main(void)
-// {
-// 	char u[]="  \t \r -g12548kd ";
-// 	printf("%d", ft_atoi(u));
-// }
