@@ -26,7 +26,7 @@ size_t	ft_strlen(const	char *str)
 		i++;
 	return (i);
 }
-static	char	*ft_strcpy(char *dst, const char *src)
+char	*ft_strcpy(char *dst, const char *src)
 {
 	unsigned int	i;
 
@@ -40,7 +40,7 @@ static	char	*ft_strcpy(char *dst, const char *src)
 	return (dst);
 }
 
-static	char	*ft_strcat(char *dest, const char *src)
+char	*ft_strcat(char *dest, const char *src)
 {
 	int	i;
 	int	j;

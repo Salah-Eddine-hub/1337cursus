@@ -1,5 +1,13 @@
+hello man 1
+hello man 2
+hello man 3
+
+
+
+
+
 Calling your function get_next_line in a loop will then allow you to read the text
-available on the file descriptor one line at a time until the end of it.
+available on the file descriptor one line at a time until the end of it. 
 • Your function should return the line that has just been read. If there is nothing
 else to read or if an error has occurred it should return NULL.
 • Make sure that your function behaves well when it reads from a file and when it
