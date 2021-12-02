@@ -10,54 +10,44 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include"get_next_line.h"
-// #define BUF_SIZE 100000
-
-size_t	buffer_checker(char **buffer)
-{
-	size_t	i;
-
-	i = 0;
-	while (buff[i])
-		if (buff[i++] == '\n')
-			return (i - 1);
-	return (i);
-}
+#include "get_next_line.h"
 char *get_next_line(int fd)
 {
-	char	*buffer;
-	static char	*save;
-	int		i;
+	static char	buffer[BUFFER_SIZE + 1];
+	char		*next_line;
+	char		*useit;
+	int			buffer_len;
+	int			ret;
 
-	i = 0;
-	buffer = (char *) malloc (sizeof(char)*(BUFFER_SIZE+1));
-	if (!buffer)
-		return (NULL);
-	save = read(fd, buffer, BUFFER_SIZE);
+	next_line = malloc (1 * sizeof(char));
+	if (!next_line)
+		return (0);
+	next_line[0] = '\0';
+	while (!ft_strchr(next_line, '\n'))
+	{
+		if (!*buffer)
+		{
+			ret = read(fd, buffer, BUFFER_SIZE);
+			buffer[ret] = '\0';
+			if (ret == 0)
+				return (0);
+		}
+		buffer_len = 0;
+		while (buffer[buffer_len] && buffer[buffer_len] != '\n')
+			buffer_len++;
+		next_line = ft_strnljoin(next_line, buffer);
+		useit = buffer;
+		if (BUFFER_SIZE > buffer_len) 
+			return (buffer);
+	return (next_line);
 }
 
 int main(void)
 {
 	int	fd;
+	char *str;
 
-	fd = open("next.txt", O_RDONLY);
-	fo (int i = 0; i < 3; i++)
-		printf("%s", get_next_line(fd));
+	fd = open("text.txt", O_RDONLY);
+	while((str = get_next_line(fd)))
+		printf("%s", str);
 }
-
-
-// int main(void)
-// {
-//     int fd;
-// 	int ret;
-// 	char	str[BUFFER_SIZE + 1];
-
-//     fd = open("next.txt", O_CREAT  | O_RDWR);
-// 	printf("fd = %d \n", fd);
-// 	if (fd == -1)
-// 		return (1);
-// 	ret = read(fd, str, BUFFER_SIZE);
-// 	str[ret] = '\0';
-// 	printf("ret = %d\n", ret);
-// 	printf("%s", str);
-// }

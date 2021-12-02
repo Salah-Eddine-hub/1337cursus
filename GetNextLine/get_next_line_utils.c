@@ -39,70 +39,48 @@ char	*ft_strcpy(char *dst, const char *src)
 	dst[i] = '\0';
 	return (dst);
 }
-
-char	*ft_strcat(char *dest, const char *src)
+char	*ft_strchr(const char *s, int c)
 {
 	int	i;
-	int	j;
-	int	lendest;
-	int	lensrc;
-	int	lenofboth;
 
+	if (!s)
+		return (NULL);
 	i = 0;
-	j = 0;
-	lendest = ft_strlen(dest);
-	lensrc = ft_strlen(src);
-	lenofboth = lendest + lensrc;
-	while (i < lendest)
-		i++;
-	while (i < lenofboth)
+	while (s[i] != '\0')
 	{
-		dest[i] = src[j];
+		if ((char)c == s[i])
+			return ((char *)&s[i]);
 		i++;
-		j++;
 	}
-	dest[i] = '\0';
-	return (dest);
+	if ((char)c == '\0')
+		return ((char *)&s[i]);
+	return (0);
 }
 
-char	*ft_strjoin(char const *s1, char const *s2)
+char	*ft_strnljoin(char const *s1, char const *s2)
 {
 	char	*s;
+	int		s_len;
+	int		s2_len;
+	int		i;
 
 	if (!s1 || !s2)
 		return (NULL);
-	s = ((char *)malloc(ft_strlen(s1) + ft_strlen(s2) + 1));
+	s2_len = 0;
+	while (s2[s2_len] && s2[s2_len] != '\n')
+		s2_len++;
+	s = ((char *)malloc(ft_strlen(s1) + s2_len + 2));
 	if (s == 0)
 		return (NULL);
 	ft_strcpy(s, (char *) s1);
-	ft_strcat(s, (char *) s2);
+	s_len = ft_strlen(s);
+	i = 0;
+	while (i < (int)ft_strlen(s2) && s2[i - 1] != '\n')
+	{
+		s[s_len + i] = s2[i];
+		i++;
+	}
+	s[s_len + i] = '\0';
+	free ((void *)s1);
 	return (s);
 }
-
-char	*ft_substr(char const *s, unsigned int start, size_t len)
-{
-	char	*str;
-	size_t	str_len;
-	size_t	i;
-
-	if (s == NULL)
-		return (0);
-	str_len = len;
-	if (len > ft_strlen(s) - start)
-		str_len = ft_strlen(s) - start;
-	if (start >= ft_strlen(s))
-		str_len = 0;
-	str = (char *) malloc (sizeof(char) * (str_len + 1));
-	if (str == NULL)
-		return (0);
-	i = 0;
-	while (i < str_len)
-	{
-		str[i] = s[start];
-		i++;
-		start++;
-	}
-	str[i] = '\0';
-	return (str);
-}
-
