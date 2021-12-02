@@ -39,6 +39,8 @@ char *get_next_line(int fd)
 		useit = buffer;
 		if (BUFFER_SIZE > buffer_len) 
 			return (buffer);
+		ft_strcpy(buffer, useit + buffer_len + 1);
+	}
 	return (next_line);
 }
 
