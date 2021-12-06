@@ -11,11 +11,12 @@
 /* ************************************************************************** */
 
 #include "get_next_line.h"
-char *get_next_line(int fd)
+#include "get_next_line_utils.c"
+
+char	*get_next_line(int fd)
 {
 	static char	buffer[BUFFER_SIZE + 1];
 	char		*next_line;
-	char		*useit;
 	int			buffer_len;
 	int			ret;
 
@@ -29,17 +30,16 @@ char *get_next_line(int fd)
 		{
 			ret = read(fd, buffer, BUFFER_SIZE);
 			buffer[ret] = '\0';
-			if (ret == 0)
+			if (ret < 1)
 				return (0);
 		}
 		buffer_len = 0;
 		while (buffer[buffer_len] && buffer[buffer_len] != '\n')
 			buffer_len++;
+		if (buffer[buffer_len] == '\n')
+			buffer_len++;
 		next_line = ft_strnljoin(next_line, buffer);
-		useit = buffer;
-		if (BUFFER_SIZE > buffer_len) 
-			return (buffer);
-		ft_strcpy(buffer, useit + buffer_len + 1);
+		ft_strcpy(buffer, buffer + buffer_len);
 	}
 	return (next_line);
 }

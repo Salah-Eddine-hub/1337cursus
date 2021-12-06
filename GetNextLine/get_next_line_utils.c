@@ -10,9 +10,6 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-/* we need this functions in this project
-ft_strlen, ft_substr, ft_strjoin, */
-
 #include"get_next_line.h"
 
 size_t	ft_strlen(const	char *str)
@@ -69,13 +66,15 @@ char	*ft_strnljoin(char const *s1, char const *s2)
 	s2_len = 0;
 	while (s2[s2_len] && s2[s2_len] != '\n')
 		s2_len++;
-	s = ((char *)malloc(ft_strlen(s1) + s2_len + 2));
+	if (s2[s2_len] == '\n')
+		s2_len++;
+	s = ((char *)malloc(ft_strlen(s1) + s2_len + 1));
 	if (s == 0)
 		return (NULL);
 	ft_strcpy(s, (char *) s1);
 	s_len = ft_strlen(s);
 	i = 0;
-	while (i < (int)ft_strlen(s2) && s2[i - 1] != '\n')
+	while (i < s2_len)
 	{
 		s[s_len + i] = s2[i];
 		i++;
