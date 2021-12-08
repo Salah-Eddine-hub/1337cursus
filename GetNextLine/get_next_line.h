@@ -19,7 +19,7 @@
 #include<fcntl.h>
 
 
-#define BUFFER_SIZE 5
+// #define BUFFER_SIZE 100000000
 
 char	*get_next_line(int fd);
 size_t	ft_strlen(const	char *str);
