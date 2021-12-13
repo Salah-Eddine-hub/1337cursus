@@ -11,7 +11,7 @@
 /* ************************************************************************** */
 
 #include "get_next_line.h"
-// #include "get_next_line_utils.c"
+#include "get_next_line_utils.c"
 
 char	*get_next_line(int fd)
 {
@@ -19,40 +19,42 @@ char	*get_next_line(int fd)
 	char		*next_line;
 	size_t		buffer_len;
 	int			ret;
-
+	
 	next_line = malloc (1 * sizeof(char));
 	if (!next_line)
 		return (0);
 	next_line[0] = '\0';
-	while (!ft_strchr(next_line, '\n'))
+	while (ft_strchr(next_line, '\n') == '\0')
 	{
-		if (!*buffer)
-		{
-			ret = read(fd, buffer, BUFFER_SIZE);
-			buffer[ret] = '\0';
-			if (ret < 1)
-				break ;
-		}
+	if (buffer[0] == '\0')
+	{
+		ret = read(fd, buffer, BUFFER_SIZE);
+		buffer[ret] = '\0';
+		if (ret < 1)
+			break ;
+	}
 		buffer_len = 0;
 		while (buffer[buffer_len] && buffer[buffer_len] != '\n')
 			buffer_len ++;
 		if (buffer[buffer_len] == '\n')
 			buffer_len ++;
-		next_line = ft_strnljoin(next_line, buffer);
-		ft_strcpy(buffer, buffer + buffer_len);
+		next_line = ft_strnljoin(next_line, &buffer[0]);
+		ft_strcpy(&buffer[0], &buffer[buffer_len]);
 	}
 	if (*next_line == '\0')
+	{
+		free (next_line);
 		return (0);
+	}
 	return (next_line);
 }
-/*
+
 int main(void)
 {
 	int	fd;
-	char *str;
 
-	fd = open("text.txt", O_RDONLY);
-	while((str = get_next_line(fd)))
-		printf("%s", str);
+	fd = open("hh", O_RDWR);
+	
+	printf("%s", get_next_line(fd));
+	printf("%s", get_next_line(fd));
 }
-*/
