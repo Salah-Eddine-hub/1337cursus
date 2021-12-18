@@ -23,6 +23,7 @@ size_t	ft_strlen(const	char *str)
 		i++;
 	return (i);
 }
+
 void	ft_strcpy(char *dst, const char *src)
 {
 	unsigned int	i;
@@ -34,19 +35,6 @@ void	ft_strcpy(char *dst, const char *src)
 		i++;
 	}
 	dst[i] = '\0';
-}
-
-char	*ft_strdup(const char *src)
-{
-	char	*dest;
-	size_t	i;
-
-	i = ft_strlen(src);
-	dest = (char *)malloc((i + 1) * sizeof (char));
-	if (dest == NULL)
-		return (0);
-	ft_strcpy(dest, src);
-	return (dest);
 }
 
 char	*ft_strchr(const char *s, int c)
@@ -67,6 +55,19 @@ char	*ft_strchr(const char *s, int c)
 	return (0);
 }
 
+void	ft_bzero(void *s, size_t n)
+{
+	size_t	i;
+	char	*str;
+
+	i = 0;
+	str = (char *)s;
+	while (n > i)
+	{
+		str[i] = 0;
+		i++;
+	}
+}
 
 char	*ft_strnljoin(char *s1, char *s2)
 {

@@ -13,17 +13,15 @@
 #ifndef GET_NEXT_LINE_H
 # define GET_NEXT_LINE_H
 
-#include<stdlib.h>
-#include<stdio.h>
-#include<unistd.h>
-#include<fcntl.h>
-
-
-// #define BUFFER_SIZE 12
+# include<stdlib.h>
+# include<stdio.h>
+# include<unistd.h>
+# include<fcntl.h>
 
 char	*get_next_line(int fd);
 size_t	ft_strlen(const	char *str);
-char	*ft_strnljoin(char *s1, char *s2);
-char	*ft_strchr(const char *s, int c);
 void	ft_strcpy(char *dst, const char *src);
+char	*ft_strchr(const char *s, int c);
+void	ft_bzero(void *s, size_t n);
+char	*ft_strnljoin(char *s1, char *s2);
 #endif

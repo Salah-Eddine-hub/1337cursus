@@ -11,9 +11,8 @@
 /* ************************************************************************** */
 
 #include "get_next_line.h"
-// #include "get_next_line_utils.c"
 
-int	ft_read_fd(int fd, char **next_line)
+static int	ft_read_fd(int fd, char **next_line)
 {
 	static char	buffer[BUFFER_SIZE + 1];
 	int			ret;
@@ -24,7 +23,11 @@ int	ft_read_fd(int fd, char **next_line)
 		ret = read(fd, buffer, BUFFER_SIZE);
 		buffer[ret] = '\0';
 		if (ret < 1)
+		{
+			if (ret == -1)
+				ft_bzero(*next_line, 1);
 			return (0);
+		}
 	}
 	buffer_len = 0;
 	while (buffer[buffer_len] && buffer[buffer_len] != '\n')
@@ -39,13 +42,13 @@ int	ft_read_fd(int fd, char **next_line)
 char	*get_next_line(int fd)
 {
 	char	*next_line;
-	
+
 	next_line = malloc (1 * sizeof(char));
 	if (!next_line)
 		return (0);
 	next_line[0] = '\0';
-	while(!ft_strchr(next_line, '\n'))
-		if(!ft_read_fd(fd, &next_line))
+	while (!ft_strchr(next_line, '\n'))
+		if (!ft_read_fd(fd, &next_line))
 			break ;
 	if (next_line[0] == '\0')
 	{
@@ -54,18 +57,3 @@ char	*get_next_line(int fd)
 	}
 	return (next_line);
 }
-
-// int main(void)
-// {
-// 	int	fd;
-
-// 	fd = open("hh", O_RDWR);
-	
-// 	printf("%s", get_next_line(fd));
-// 	printf("%s", get_next_line(fd));
-// 	printf("%s", get_next_line(fd));
-// 	printf("%s", get_next_line(fd));
-// 	printf("%s", get_next_line(fd));
-// 	printf("%s", get_next_line(fd));
-// 	printf("%s", get_next_line(fd));
-// }

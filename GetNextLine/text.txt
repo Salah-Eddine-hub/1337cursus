@@ -1,4 +1,0 @@
-Calling your function get_next_line hh
-available on the file descriptor one hh
-• Your function should return the hh
-function get_next_line hh
