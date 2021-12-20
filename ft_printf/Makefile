@@ -10,11 +10,12 @@
 #                                                                              #
 # **************************************************************************** #
 
-NAME = ft_printf.a
+NAME =	libftprintf.a
 
-HEADER = ft_printf.h
+HEADER =	ft_printf.h
 
-SRCS = ft_printf.c\
+SRCS =	ft_printf.c\
+		ft_printf_utils.c
 
 OBJS = $(SRCS:.c=.o)
 
@@ -24,14 +25,8 @@ CFLAGS = -Wall -Wextra -Werror
 
 RM		= rm -f
 
-.c.o:
-		$(CC) $(CFLAGS) -c $< -o $(<:.c=.o)
-
-$(NAME):	$(OBJS)
+$(NAME):	$(OBJS) $(HEADER)
 		ar rcs $(NAME) $(OBJS)
-
-bonus:		$(OBJS)
-			ar rcs $(NAME) $(OBJS)
 
 all:	$(NAME)
 

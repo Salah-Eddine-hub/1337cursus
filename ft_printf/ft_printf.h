@@ -18,11 +18,11 @@
 # include <stdarg.h>
 
 int		ft_printf(const char *s, ...);
-void	ft_putchar(char c, int *len);
-void	ft_putstr(char *s, int *len);
-void	ft_putnbr(int n, int *len);
-void	ft_putunbr(unsigned int n, int *len);
-void	ft_hex(unsigned long n, int *len);
-void	ft_uhex(unsigned long n, int *len);
+void	ft_putchar(char c, int *count);
+void	ft_putstr(char *s, int *count);
+void	ft_putnbr(int n, int *count);
+void	ft_putunbr(unsigned int n, int *count);
+void	ft_hex(unsigned long n, int *count);
+void	ft_uhex(unsigned int n, int *count);
 
 #endif
