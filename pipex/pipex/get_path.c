@@ -1,40 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_substr.c                                        :+:      :+:    :+:   */
+/*   get_path.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sharrach <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/17 19:28:51 by sharrach          #+#    #+#             */
-/*   Updated: 2022/02/17 19:28:53 by sharrach         ###   ########.fr       */
+/*   Created: 2022/02/21 16:41:51 by sharrach          #+#    #+#             */
+/*   Updated: 2022/02/21 16:41:52 by sharrach         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex.h"
 
-char	*ft_substr(char const *s, unsigned int start, size_t len)
+char    **get_paths(char *env[])
 {
-	char	*str;
-	size_t	str_len;
-	size_t	i;
+	int		i;
+	char	**s_paths;
 
-	if (s == NULL)
-		return (0);
-	str_len = len;
-	if (len > ft_strlen(s) - start)
-		str_len = ft_strlen(s) - start;
-	if (start >= ft_strlen(s))
-		str_len = 0;
-	str = (char *) malloc (sizeof(char) * (str_len + 1));
-	if (str == NULL)
-		return (0);
 	i = 0;
-	while (i < str_len)
-	{
-		str[i] = s[start];
+	while(!ft_strnstr(env[i], "PATH=", 5))
 		i++;
-		start++;
-	}
-	str[i] = '\0';
-	return (str);
+	s_paths = ft_split(env[i] + 5, ':');
+	return (s_paths);
 }

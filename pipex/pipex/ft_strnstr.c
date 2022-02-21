@@ -1,40 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_substr.c                                        :+:      :+:    :+:   */
+/*   ft_strnstr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sharrach <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/17 19:28:51 by sharrach          #+#    #+#             */
-/*   Updated: 2022/02/17 19:28:53 by sharrach         ###   ########.fr       */
+/*   Created: 2022/02/21 17:16:01 by sharrach          #+#    #+#             */
+/*   Updated: 2022/02/21 17:16:04 by sharrach         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex.h"
 
-char	*ft_substr(char const *s, unsigned int start, size_t len)
+char	*ft_strnstr(const char *haystack, const char *needle, size_t len)
 {
-	char	*str;
-	size_t	str_len;
 	size_t	i;
+	size_t	j;
 
-	if (s == NULL)
-		return (0);
-	str_len = len;
-	if (len > ft_strlen(s) - start)
-		str_len = ft_strlen(s) - start;
-	if (start >= ft_strlen(s))
-		str_len = 0;
-	str = (char *) malloc (sizeof(char) * (str_len + 1));
-	if (str == NULL)
-		return (0);
 	i = 0;
-	while (i < str_len)
+	if (*needle == 0)
+		return ((char *)haystack);
+	while (haystack[i] != '\0' && i < len)
 	{
-		str[i] = s[start];
+		j = 0;
+		while (haystack[i + j] && i + j < len && haystack[i + j] == needle[j])
+		{
+			if (needle[j + 1] == '\0')
+				return ((char *)&haystack[i]);
+			j++;
+		}
 		i++;
-		start++;
 	}
-	str[i] = '\0';
-	return (str);
+	return (0);
 }

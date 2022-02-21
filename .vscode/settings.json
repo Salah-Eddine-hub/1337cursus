@@ -1,7 +1,10 @@
 {
     "files.associations": {
         "ft_printf.h": "c",
-        "sstream": "c"
+        "sstream": "c",
+        "pipex.h": "c",
+        "stdlib.h": "c",
+        "fcntl.h": "c"
     },
     "C_Cpp.errorSquiggles": "Disabled"
 }

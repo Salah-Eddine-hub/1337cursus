@@ -12,3 +12,13 @@
 
 #include "pipex.h"
 
+int main (int ac, char **av, char **env)
+{
+    int i;
+
+    i = 0;    
+    if (ac != 5)
+        return (EXIT_FAILURE);
+    
+    return (EXIT_SUCCESS);
+}

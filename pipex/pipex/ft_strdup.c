@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <pipex.h>
+#include "pipex.h"
  
 static char	*ft_strcpy(char *dest, const char *src)
 {

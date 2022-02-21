@@ -1,25 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlen.c                                        :+:      :+:    :+:   */
+/*   exec_path.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sharrach <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/17 19:30:36 by sharrach          #+#    #+#             */
-/*   Updated: 2022/02/17 19:30:38 by sharrach         ###   ########.fr       */
+/*   Created: 2022/02/21 17:24:27 by sharrach          #+#    #+#             */
+/*   Updated: 2022/02/21 17:24:30 by sharrach         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "pipex.h"
+	#include "pipex.h"
 
-size_t	ft_strlen(const	char *str)
+char    **exec_path(char *cmd)
 {
-	size_t	i;
-	char	*s;
+	if (access("s_paths", F_OK) != '\0')
+	{
 
-	s = (char *)str;
-	i = 0;
-	while (s[i] != '\0')
-		i++;
-	return (i);
+	}
 }
