@@ -11,17 +11,20 @@
 # **************************************************************************** #
 
 
-NAME =	pipex.a
+NAME =	pipex
 
 HEADER =	pipex.h
 
 SRCS =	ft_split.c\
 		ft_strdup.c\
 		ft_strlen.c\
+		ft_strjoin.c\
 		ft_substr.c\
 		ft_strnstr.c\
 		get_path.c\
-		pipex.c\
+		exec_path.c\
+		pipex.c
+		
 
 
 OBJS = $(SRCS:.c=.o)
@@ -32,8 +35,11 @@ CFLAGS = -Wall -Wextra -Werror
 
 RM		= rm -f
 
+.c.o:
+			$(CC) $(CFLAGS) -c $< -o $(<:.c=.o)
+
 $(NAME):	$(OBJS) $(HEADER)
-		ar rcs $(NAME) $(OBJS)
+			$(CC) $(CFLAGS) $(OBJS) -o $(NAME)
 
 all:	$(NAME)
 

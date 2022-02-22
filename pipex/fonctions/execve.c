@@ -16,7 +16,7 @@
 int main(int argc, char **argv, char **envp) 
 {
   printf("Main program started\n");
-  char* args[] = { "/bin/cat", argv[1], NULL };
+  char* args[] = { "/bin/ls", "-la", NULL };
   if (execve(args[0], args, envp) == -1)
     perror("Could not execve");
   printf("hh\n");

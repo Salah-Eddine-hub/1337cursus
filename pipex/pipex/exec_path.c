@@ -12,10 +12,21 @@
 
 	#include "pipex.h"
 
-char    **exec_path(char *cmd)
+char	*exec_path(char *cmd, char **s_paths)
 {
-	if (access("s_paths", F_OK) != '\0')
+	int 	i;
+	char	*path;
+	
+	i = 0;
+	while(s_paths[i] != NULL)
 	{
-
+		path = ft_strdup(s_paths[i]);
+		s_paths[i] = ft_strjoin(s_paths[i], "/");
+		s_paths[i] = ft_strjoin(s_paths[i], cmd);
+		if (access(s_paths[i], X_OK) == 0)
+			return (path);
+		free(path);
+		i++;
 	}
+	return (NULL);
 }

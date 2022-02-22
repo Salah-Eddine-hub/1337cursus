@@ -20,6 +20,6 @@ char    **get_paths(char *env[])
 	i = 0;
 	while(!ft_strnstr(env[i], "PATH=", 5))
 		i++;
-	s_paths = ft_split(env[i] + 5, ':');
+	s_paths = ft_split(&env[i][5], ':');
 	return (s_paths);
 }
