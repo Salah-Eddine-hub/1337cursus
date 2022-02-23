@@ -23,8 +23,9 @@ char	*exec_path(char *cmd, char **s_paths)
 		path = ft_strdup(s_paths[i]);
 		s_paths[i] = ft_strjoin(s_paths[i], "/");
 		s_paths[i] = ft_strjoin(s_paths[i], cmd);
+		// printf("%s\n", s_paths[i]);
 		if (access(s_paths[i], X_OK) == 0)
-			return (path);
+			return (s_paths[i]);
 		free(path);
 		i++;
 	}
