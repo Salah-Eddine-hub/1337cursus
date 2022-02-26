@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-	#include "pipex.h"
+#include "pipex.h"
 
 char	*exec_path(char *cmd, char **s_paths)
 {
