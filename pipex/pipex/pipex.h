@@ -26,8 +26,8 @@ char	*ft_strdup(const char *s1);
 char	*ft_substr(char const *s, unsigned int start, size_t len);
 size_t	ft_strlen(const	char *str);
 char	*ft_strnstr(const char *haystack, const char *needle, size_t len);
-char    **get_paths(char *env[]);
-char	*exec_path(char *cmd, char **s_paths);
+char    **split_paths(char *env[]);
+char	*add_cmd_path(char *cmd, char **s_paths);
 
 
 #endif

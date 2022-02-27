@@ -21,8 +21,8 @@ SRCS =	ft_split.c\
 		ft_strjoin.c\
 		ft_substr.c\
 		ft_strnstr.c\
-		get_path.c\
-		exec_path.c\
+		split_path.c\
+		add_cmd_path.c\
 		pipex.c
 		
 

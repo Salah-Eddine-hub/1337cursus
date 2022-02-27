@@ -1,33 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   exec_path.c                                        :+:      :+:    :+:   */
+/*   get_path.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sharrach <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/21 17:24:27 by sharrach          #+#    #+#             */
-/*   Updated: 2022/02/21 17:24:30 by sharrach         ###   ########.fr       */
+/*   Created: 2022/02/21 16:41:51 by sharrach          #+#    #+#             */
+/*   Updated: 2022/02/21 16:41:52 by sharrach         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex.h"
 
-char	*exec_path(char *cmd, char **s_paths)
+char    **split_paths(char *env[])
 {
-	int 	i;
-	char	*path;
-	
+	int		i;
+	char	**s_paths;
+
 	i = 0;
-	while(s_paths[i] != NULL)
-	{
-		path = ft_strdup(s_paths[i]);
-		s_paths[i] = ft_strjoin(s_paths[i], "/");
-		s_paths[i] = ft_strjoin(s_paths[i], cmd);
-		// printf("%s\n", s_paths[i]);
-		if (access(s_paths[i], X_OK) == 0)
-			return (s_paths[i]);
-		free(path);
+	while(!ft_strnstr(env[i], "PATH=", 5))
 		i++;
-	}
-	return (NULL);
+	s_paths = ft_split(&env[i][5], ':');
+	return (s_paths);
 }
