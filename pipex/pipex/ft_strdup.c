@@ -3,15 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sharrach <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: sharrach <sharrach@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/17 19:27:34 by sharrach          #+#    #+#             */
-/*   Updated: 2022/02/17 19:27:35 by sharrach         ###   ########.fr       */
+/*   Updated: 2022/02/28 13:35:59 by sharrach         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex.h"
- 
+
 static char	*ft_strcpy(char *dest, const char *src)
 {
 	size_t		i;

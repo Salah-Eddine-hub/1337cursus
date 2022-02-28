@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: sharrach <marvin@42.fr>                    +#+  +:+       +#+         #
+#    By: sharrach <sharrach@student.1337.ma>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/02/18 22:07:41 by sharrach          #+#    #+#              #
-#    Updated: 2022/02/18 22:07:43 by sharrach         ###   ########.fr        #
+#    Updated: 2022/02/28 13:45:13 by sharrach         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,7 +21,8 @@ SRCS =	ft_split.c\
 		ft_strjoin.c\
 		ft_substr.c\
 		ft_strnstr.c\
-		split_path.c\
+		ft_free.c\
+		split_paths.c\
 		add_cmd_path.c\
 		pipex.c
 		

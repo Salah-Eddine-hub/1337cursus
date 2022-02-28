@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strjoin.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sharrach <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: sharrach <sharrach@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/22 11:36:18 by sharrach          #+#    #+#             */
-/*   Updated: 2022/02/22 11:36:19 by sharrach         ###   ########.fr       */
+/*   Updated: 2022/02/28 13:36:25 by sharrach         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,6 @@ char	*ft_strjoin(char const *s1, char const *s2)
 		return (NULL);
 	ft_strcpy(s, (char *) s1);
 	ft_strcat(s, (char *) s2);
-    free((void *)s1);
+	free((void *)s1);
 	return (s);
 }

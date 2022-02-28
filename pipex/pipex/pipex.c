@@ -3,23 +3,23 @@
 /*                                                        :::      ::::::::   */
 /*   pipex.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sharrach <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: sharrach <sharrach@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/17 17:43:48 by sharrach          #+#    #+#             */
-/*   Updated: 2022/02/17 17:43:50 by sharrach         ###   ########.fr       */
+/*   Created: 2022/02/27 16:30:42 by sharrach          #+#    #+#             */
+/*   Updated: 2022/02/28 17:15:29 by sharrach         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex.h"
 
-char **get_command(char **av, char **env)
+char	**get_command(char **av, char **env, int i)
 {
 	char	**s_paths;
 	char	**cmd;
 	char	*path;
 
 	s_paths = split_paths(env);
-	cmd = ft_split(av[2], ' ');
+	cmd = ft_split(av[i], ' ');
 	path = add_cmd_path(cmd[0], s_paths);
 	if (path == NULL)
 		return (NULL);
@@ -27,52 +27,68 @@ char **get_command(char **av, char **env)
 	return (cmd);
 }
 
-	fdout = open(av[3], O_CREAT | O_RDWR | O_TRUNC, 0644);
-	dup2(fd[0], STDIN_FILENO);
-	close(fd[0]);
-	dup2(fdout, STDOUT_FILENO);
-	close(fdout);
-	if (execve(cmd[0], cmd, env) == -1)
-		perror("Could not execve");
-int	exec_cmd(char **av, char **cmd, char **env)
+static void	exec_first_cmd(char **av, char **cmd, char **env, int p[2])
 {
-	int fdin;
-	int fd[2];
-	int fdout;
-	// pid_t	childp;
+	int	fdin;
 
+	close(p[STDIN_FILENO]);
+	dup2(p[STDOUT_FILENO], STDOUT_FILENO);
+	close(p[STDOUT_FILENO]);
 	fdin = open(av[1], O_RDONLY);
-	if(fdin == -1)
-		return (0);
 	dup2(fdin, STDIN_FILENO);
 	close(fdin);
-	dup2(fd[1], STDOUT_FILENO);
-	close(fd[1]);
-
 	if (execve(cmd[0], cmd, env) == -1)
 		perror("Could not execve");
-	return (1);
+	exit(EXIT_FAILURE);
 }
 
-int main (int ac, char **av, char **env)
+static void	exec_second_cmd(char **av, char **cmd, char **env, int p[2])
 {
-	char	**cmd;
-	int		pid;
+	int		fdout;
+	pid_t	pid;
 
-	(void)ac;
-	// if (ac != 3)
-	//     return (EXIT_FAILURE);
-	cmd = get_command(av, env);
-	if (cmd == NULL)
-	    return (EXIT_FAILURE);
 	pid = fork();
 	if (pid == -1)
-		exiterror("PID Error");
+		exit(EXIT_FAILURE);
 	if (pid == 0)
 	{
-		exec_cmd(av, cmd, env);
+		close(p[STDOUT_FILENO]);
+		dup2(p[STDIN_FILENO], STDIN_FILENO);
+		close(p[STDIN_FILENO]);
+		fdout = open(av[4], O_RDWR | O_TRUNC | O_CREAT, 0644);
+		dup2(fdout, STDOUT_FILENO);
+		close(fdout);
+		if (execve(cmd[0], cmd, env) == -1)
+			perror("Could not execve");
+		exit(EXIT_FAILURE);
 	}
-	return (EXIT_SUCCESS);
+	//waitpid(pid, NULL, 0);
+	close(p[STDOUT_FILENO]);
+	close(p[STDIN_FILENO]);
 }
 
+int	main(int ac, char **av, char **env)
+{
+	char	**cmd;
+	char	**cmd1;
+	int		p[2];
+	int		pid;
 
+	if (ac != 5)
+		return (EXIT_FAILURE);
+	cmd = get_command(av, env, 2);
+	cmd1 = get_command(av, env, 3);
+	if (cmd == NULL)
+		exit(EXIT_FAILURE);
+	pipe(p);
+	if (pipe(p) == -1)
+		exit(EXIT_FAILURE);
+	pid = fork();
+	if (pid == -1)
+		exit(EXIT_FAILURE);
+	if (pid == 0)
+		exec_first_cmd(av, cmd, env, p);
+	exec_second_cmd(av, cmd1, env, p);
+	waitpid(-1, NULL, 0);
+	return (EXIT_SUCCESS);
+}

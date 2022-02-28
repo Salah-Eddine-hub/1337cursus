@@ -1,25 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlen.c                                        :+:      :+:    :+:   */
+/*   split_paths.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sharrach <sharrach@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/17 19:30:36 by sharrach          #+#    #+#             */
-/*   Updated: 2022/02/28 13:43:31 by sharrach         ###   ########.fr       */
+/*   Created: 2022/02/21 16:41:51 by sharrach          #+#    #+#             */
+/*   Updated: 2022/02/28 13:42:57 by sharrach         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex.h"
 
-size_t	ft_strlen(const	char *str)
+char	**split_paths(char *env[])
 {
-	size_t	i;
-	char	*s;
+	int		i;
+	char	**s_paths;
 
-	s = (char *)str;
 	i = 0;
-	while (s[i] != '\0')
+	while (!ft_strnstr(env[i], "PATH=", 5))
 		i++;
-	return (i);
+	s_paths = ft_split(&env[i][5], ':');
+	return (s_paths);
 }

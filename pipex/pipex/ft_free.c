@@ -1,25 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_path.c                                         :+:      :+:    :+:   */
+/*   ft_free.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sharrach <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: sharrach <sharrach@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/21 16:41:51 by sharrach          #+#    #+#             */
-/*   Updated: 2022/02/21 16:41:52 by sharrach         ###   ########.fr       */
+/*   Created: 2022/02/28 12:33:09 by sharrach          #+#    #+#             */
+/*   Updated: 2022/02/28 13:43:53 by sharrach         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex.h"
 
-char    **split_paths(char *env[])
+void	*ft_free2d(char **ptr)
 {
-	int		i;
-	char	**s_paths;
+	int	i;
 
 	i = 0;
-	while(!ft_strnstr(env[i], "PATH=", 5))
+	while (ptr[i])
+	{
+		free(ptr[i]);
 		i++;
-	s_paths = ft_split(&env[i][5], ':');
-	return (s_paths);
+	}
+	free(ptr);
+	return (NULL);
 }
