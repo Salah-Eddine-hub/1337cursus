@@ -6,20 +6,20 @@
 /*   By: sharrach <sharrach@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/27 16:30:42 by sharrach          #+#    #+#             */
-/*   Updated: 2022/02/28 17:15:29 by sharrach         ###   ########.fr       */
+/*   Updated: 2022/03/01 15:39:22 by sharrach         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex.h"
 
-char	**get_command(char **av, char **env, int i)
+char	**get_command(char *av, char **env)
 {
 	char	**s_paths;
 	char	**cmd;
 	char	*path;
 
 	s_paths = split_paths(env);
-	cmd = ft_split(av[i], ' ');
+	cmd = ft_split(av, ' ');
 	path = add_cmd_path(cmd[0], s_paths);
 	if (path == NULL)
 		return (NULL);
@@ -60,9 +60,10 @@ static void	exec_second_cmd(char **av, char **cmd, char **env, int p[2])
 		close(fdout);
 		if (execve(cmd[0], cmd, env) == -1)
 			perror("Could not execve");
+		ft_free2d(cmd);
 		exit(EXIT_FAILURE);
 	}
-	//waitpid(pid, NULL, 0);
+	waitpid(pid, NULL, 0);
 	close(p[STDOUT_FILENO]);
 	close(p[STDIN_FILENO]);
 }
@@ -76,8 +77,8 @@ int	main(int ac, char **av, char **env)
 
 	if (ac != 5)
 		return (EXIT_FAILURE);
-	cmd = get_command(av, env, 2);
-	cmd1 = get_command(av, env, 3);
+	cmd = get_command(av[2], env);
+	cmd1 = get_command(av[3], env);
 	if (cmd == NULL)
 		exit(EXIT_FAILURE);
 	pipe(p);
@@ -89,6 +90,5 @@ int	main(int ac, char **av, char **env)
 	if (pid == 0)
 		exec_first_cmd(av, cmd, env, p);
 	exec_second_cmd(av, cmd1, env, p);
-	waitpid(-1, NULL, 0);
 	return (EXIT_SUCCESS);
 }

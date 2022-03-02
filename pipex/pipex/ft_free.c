@@ -6,13 +6,13 @@
 /*   By: sharrach <sharrach@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/28 12:33:09 by sharrach          #+#    #+#             */
-/*   Updated: 2022/02/28 13:43:53 by sharrach         ###   ########.fr       */
+/*   Updated: 2022/03/01 15:00:45 by sharrach         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex.h"
 
-void	*ft_free2d(char **ptr)
+void	ft_free2d(char **ptr)
 {
 	int	i;
 
@@ -23,5 +23,4 @@ void	*ft_free2d(char **ptr)
 		i++;
 	}
 	free(ptr);
-	return (NULL);
 }
